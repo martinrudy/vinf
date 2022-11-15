@@ -1,14 +1,24 @@
 {
-    "g.122wbmv2": {"title": [
-        "Amor Para Três",
-        "Amor Para Três",
-        "Amor Para Três",
-        "Amor Para Três",
-        "Amor Para Três",
-        "Amor Para Três"
-    ]},
+    "g.122wbmv2": {
+        "Written by": "None",
+        "Directed by": "None",
+        "Country": "None",
+        "Genre": "None",
+        "title": [
+            "Amor Para Três",
+            "Amor Para Três",
+            "Amor Para Três",
+            "Amor Para Três",
+            "Amor Para Três",
+            "Amor Para Três"
+        ]
+    },
     "g.122mq_1w": {
+        "Written by": "None",
         "release year": "1982",
+        "Directed by": "<http://rdf.freebase.com/ns/m.01zvx9>",
+        "Country": "None",
+        "Genre": "<http://rdf.freebase.com/ns/m.05p553>",
         "title": [
             "Jamais avant le mariage",
             "Jamais avant le mariage",
@@ -16,7 +26,11 @@
         ]
     },
     "g.1233lt5_": {
+        "Written by": "None",
         "release year": "1985-11-13",
+        "Directed by": "<http://rdf.freebase.com/ns/m.0gdmvj>",
+        "Country": "<http://rdf.freebase.com/ns/m.0f8l9c>",
+        "Genre": "<http://rdf.freebase.com/ns/m.0lsxr>",
         "title": [
             "L'homme aux yeux d'argent",
             "L'homme aux yeux d'argent",
@@ -30,7 +44,11 @@
         ]
     },
     "g.120m19_s": {
+        "Written by": "<http://rdf.freebase.com/ns/m.0c7tjc>",
         "release year": "1980-12-20",
+        "Directed by": "<http://rdf.freebase.com/ns/m.02pwjgj>",
+        "Country": "None",
+        "Genre": "None",
         "title": [
             "Misuta, Misesu, Misu Ronri",
             "ミスター・ミセス・ミス・ロンリー",
@@ -40,21 +58,37 @@
             "Misuta, Misesu, Misu Ronri"
         ]
     },
-    "g.121cgn68": {"title": [
-        "Duelo em Glory City",
-        "Duelo em Glory City",
-        "Duelo em Glory City",
-        "Duelo em Glory City",
-        "Duelo em Glory City",
-        "Duelo em Glory City"
-    ]},
-    "g.11b6jbqpt4": {"title": [
-        "Madunnella",
-        "Madunnella",
-        "Madunnella"
-    ]},
+    "g.121cgn68": {
+        "Written by": "None",
+        "Directed by": "None",
+        "Country": "<http://rdf.freebase.com/ns/m.0345h>",
+        "Genre": "None",
+        "title": [
+            "Duelo em Glory City",
+            "Duelo em Glory City",
+            "Duelo em Glory City",
+            "Duelo em Glory City",
+            "Duelo em Glory City",
+            "Duelo em Glory City"
+        ]
+    },
+    "g.11b6jbqpt4": {
+        "Written by": "None",
+        "Directed by": "None",
+        "Country": "<http://rdf.freebase.com/ns/m.03rjj>",
+        "Genre": "None",
+        "title": [
+            "Madunnella",
+            "Madunnella",
+            "Madunnella"
+        ]
+    },
     "g.1203nd9vs": {
+        "Written by": "None",
         "release year": "2003-11-26",
+        "Directed by": "<http://rdf.freebase.com/ns/m.0vt25pv>",
+        "Country": "None",
+        "Genre": "None",
         "title": [
             "Behibbuk wa ana kaman",
             "بحبك وانا كمان",
@@ -64,13 +98,23 @@
             "Behibbuk wa ana kaman"
         ]
     },
-    "g.11b768wtx5": {"title": [
-        "The History of the World Episode 10: The Discovery of Language",
-        "The History of the World Episode 10: The Discovery of Language",
-        "The History of the World Episode 10: The Discovery of Language"
-    ]},
+    "g.11b768wtx5": {
+        "Written by": "<http://rdf.freebase.com/ns/m.051p44>",
+        "Directed by": "<http://rdf.freebase.com/ns/m.051p44>",
+        "Country": "None",
+        "Genre": "None",
+        "title": [
+            "The History of the World Episode 10: The Discovery of Language",
+            "The History of the World Episode 10: The Discovery of Language",
+            "The History of the World Episode 10: The Discovery of Language"
+        ]
+    },
     "g.11x1nf8ll": {
+        "Written by": "None",
         "release year": "1908",
+        "Directed by": "<http://rdf.freebase.com/ns/m.0gxrysr>",
+        "Country": "<http://rdf.freebase.com/ns/m.06bnz>",
+        "Genre": "<http://rdf.freebase.com/ns/m.02hmvc>",
         "title": [
             "The Diligent Batman",
             "The Diligent Batman",
@@ -78,7 +122,11 @@
         ]
     },
     "g.12288sf9": {
+        "Written by": "None",
         "release year": "1976",
+        "Directed by": "<http://rdf.freebase.com/ns/m.07s39kc>",
+        "Country": "<http://rdf.freebase.com/ns/m.0f8l9c>",
+        "Genre": "<http://rdf.freebase.com/ns/m.05p553>",
         "title": [
             "Holy Year",
             "L'Année sainte",
@@ -92,7 +140,11 @@
         ]
     },
     "g.11x1nk41_": {
+        "Written by": "<http://rdf.freebase.com/ns/m.0ndg6jj>",
         "release year": "1990-06-09",
+        "Directed by": "<http://rdf.freebase.com/ns/m.07kfvr9>",
+        "Country": "<http://rdf.freebase.com/ns/m.03_3d>",
+        "Genre": "<http://rdf.freebase.com/ns/m.02822>",
         "title": [
             "Tôkyô jôkû irasshaimase",
             "도쿄 하늘",
@@ -109,7 +161,11 @@
         ]
     },
     "g.1222z6yv": {
+        "Written by": "<http://rdf.freebase.com/ns/m.04_0krz>",
         "release year": "1995-04-22",
+        "Directed by": "<http://rdf.freebase.com/ns/m.04_0krz>",
+        "Country": "<http://rdf.freebase.com/ns/m.015qh>",
+        "Genre": "<http://rdf.freebase.com/ns/m.05p553>",
         "title": [
             "Jesse James vs. Lokum Shekerov",
             "Jesse James vs. Lokum Shekerov",
@@ -117,7 +173,11 @@
         ]
     },
     "g.1228lzmc": {
+        "Written by": "None",
         "release year": "2001",
+        "Directed by": "<http://rdf.freebase.com/ns/m.0gx9_c_>",
+        "Country": "<http://rdf.freebase.com/ns/m.06bnz>",
+        "Genre": "<http://rdf.freebase.com/ns/m.02hmvc>",
         "title": [
             "Cats under the Rain",
             "Cats under the Rain",
@@ -125,7 +185,11 @@
         ]
     },
     "g.11b769j941": {
+        "Written by": "<http://rdf.freebase.com/ns/m.0d992my>",
         "release year": "2006",
+        "Directed by": "<http://rdf.freebase.com/ns/m.0d992my>",
+        "Country": "<http://rdf.freebase.com/ns/m.0f8l9c>",
+        "Genre": "<http://rdf.freebase.com/ns/m.02822>",
         "title": [
             "Rachel",
             "Rachel",
@@ -139,7 +203,11 @@
         ]
     },
     "g.1226s95s": {
+        "Written by": "None",
         "release year": "1961",
+        "Directed by": "<http://rdf.freebase.com/ns/m.0b6h97j>",
+        "Country": "<http://rdf.freebase.com/ns/m.02k54>",
+        "Genre": "None",
         "title": [
             "وادي الحب",
             "And Love Returned",
@@ -150,7 +218,11 @@
         ]
     },
     "g.11b6t1scwz": {
+        "Written by": "None",
         "release year": "1973",
+        "Directed by": "<http://rdf.freebase.com/ns/g.11bc16p_ch>",
+        "Country": "<http://rdf.freebase.com/ns/m.0jgd>",
+        "Genre": "<http://rdf.freebase.com/ns/m.05p553>",
         "title": [
             "José María y María José: Una pareja de hoy",
             "José María y María José: Una pareja de hoy",

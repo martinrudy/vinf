@@ -14,6 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Iterator;
 
+import org.apache.commons.lang3.ObjectUtils.Null;
 import org.apache.jena.atlas.json.JsonObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -188,6 +189,122 @@ public class App {
         return film;
     }
 
+    public static JSONObject getFilmDirector(JSONObject film, JSONObject object, JSONObject objects) {
+        String director = new String();
+        try {
+            director = object.getJSONArray("<http://rdf.freebase.com/ns/film.film.directed_by>").getString(0);
+        } catch (Exception e) {
+            director = null;
+        }
+        if (director != null) {
+            Pattern directorPattern = Pattern.compile(".(?<name>.+).@.+");
+            try {
+                JSONObject person = objects.getJSONObject(director);
+                String personName = person.getJSONArray("<http://rdf.freebase.com/ns/type.object.name>").getString(0);
+                Matcher matcherDirector = directorPattern.matcher(personName);
+                if(matcherDirector.find()){
+                    film.put("Directed by", matcherDirector.group("name"));
+                }
+                else{
+                    film.put("Directed by", "None");
+                }
+                
+            } catch (Exception e) {
+                film.put("Directed by", director);
+            }
+        } else {
+            film.put("Directed by", "None");
+        }
+
+        return film;
+    }
+
+    public static JSONObject getFilmWritter(JSONObject film, JSONObject object, JSONObject objects) {
+        String writter = new String();
+        try {
+            writter = object.getJSONArray("<http://rdf.freebase.com/ns/film.film.written_by>").getString(0);
+        } catch (Exception e) {
+            writter = null;
+        }
+        if (writter != null) {
+            Pattern writterPattern = Pattern.compile(".(?<name>.+).@.+");
+            try {
+                JSONObject person = objects.getJSONObject(writter);
+                String personName = person.getJSONArray("<http://rdf.freebase.com/ns/type.object.name>").getString(0);
+                Matcher matcherWritter = writterPattern.matcher(personName);
+                if(matcherWritter.find()){
+                    film.put("Written by", matcherWritter.group("name"));
+                }
+                else{
+                    film.put("Written by", "None");
+                }
+                
+            } catch (Exception e) {
+                film.put("Written by", writter);
+            }
+        } else {
+            film.put("Written by", "None");
+        }
+
+        return film;
+    }
+    public static JSONObject getFilmCountry(JSONObject film, JSONObject object, JSONObject objects) {
+        String country = new String();
+        try {
+            country = object.getJSONArray("<http://rdf.freebase.com/ns/film.film.country>").getString(0);
+        } catch (Exception e) {
+            country = null;
+        }
+        if (country != null) {
+            Pattern countryPattern = Pattern.compile(".(?<name>.+).@.+");
+            try {
+                JSONObject coun = objects.getJSONObject(country);
+                String countryName = coun.getJSONArray("<http://rdf.freebase.com/ns/type.object.name>").getString(0);
+                Matcher matcherCountry = countryPattern.matcher(countryName);
+                if(matcherCountry.find()){
+                    film.put("Country", matcherCountry.group("name"));
+                }
+                else{
+                    film.put("Country", "None");
+                }
+                
+            } catch (Exception e) {
+                film.put("Country", country);
+            }
+        } else {
+            film.put("Country", "None");
+        }
+        return film;
+    }
+    public static JSONObject getFilmGenre(JSONObject film, JSONObject object, JSONObject objects) {
+        String genre = new String();
+        try {
+            genre = object.getJSONArray("<http://rdf.freebase.com/ns/film.film.genre>").getString(0);
+        } catch (Exception e) {
+            genre = null;
+        }
+        if (genre != null) {
+            Pattern genrePattern = Pattern.compile(".(?<name>.+).@.+");
+            try {
+                JSONObject gen = objects.getJSONObject(genre);
+                String genreName = gen.getJSONArray("<http://rdf.freebase.com/ns/type.object.name>").getString(0);
+                Matcher matcherGenre = genrePattern.matcher(genreName);
+                if(matcherGenre.find()){
+                    film.put("Genre", matcherGenre.group("name"));
+                }
+                else{
+                    film.put("Genre", "None");
+                }
+                
+            } catch (Exception e) {
+                film.put("Genre", genre);
+            }
+        } else {
+            film.put("Genre", "None");
+        }
+        return film;
+    }
+
     public static JSONObject getFilmSpecs(JSONObject films, String filmID, JSONObject objects) {
         JSONObject film = new JSONObject();
         JSONObject object = new JSONObject();
@@ -198,11 +315,14 @@ public class App {
         }
         film = getFilmTitle(film, object);
         film = getReleaseYear(film, object);
+        film = getFilmDirector(film, object, objects);
+        film = getFilmWritter(film, object, objects);
+        film = getFilmCountry(film, object, objects);
+        film = getFilmGenre(film, object, objects);
         
         try {
             film.getJSONArray("title");
         } catch (Exception e) {
-            System.out.println("film without title");
             return films;
         }
         films.put(filmID, film);
@@ -212,84 +332,84 @@ public class App {
 
     public static void main(String[] args) throws IOException {
         
-        // NxParser nxp = loadFile("/Users/rudy/Documents/FIIT/VINF/Projekt/Data/freebase-head-10000000");
-        // System.out.println("file loaded");
-        // String filmId = "null";
-        // JSONObject films = new JSONObject();
-        // JSONObject objects = new JSONObject();
-        // String objectId;
+        NxParser nxp = loadFile("/Users/rudy/Documents/FIIT/VINF/Projekt/Data/freebase-head-1000000");
+        System.out.println("file loaded");
+        String filmId = "null";
+        JSONObject films = new JSONObject();
+        JSONObject objects = new JSONObject();
+        String objectId;
 
-
-        // long start = System.currentTimeMillis();
-        // while (nxp.hasNext()) {
-        //     Node[] ns = nxp.next();
-            
-        //     if (ns.length == 3){
-        //         String predicate = ns[1].toString();
-        //         String object = ns[2].toString();
-        //         objectId = getObjectId(ns);
-
-        //         JSONObject specs = new JSONObject();
-        //         JSONArray jsonArray = new JSONArray();
-
-        //         try {
-        //             specs = objects.getJSONObject(objectId);
-        //         } catch (Exception e) {
-        //             objects.put(objectId, new JSONObject());
-        //         }
-        //         try {
-        //             jsonArray = specs.getJSONArray(predicate);
-        //         } catch (Exception e) {
-        //             specs.put(predicate, jsonArray);
-        //         }
-
-        //         jsonArray.put(object);
-        //         specs.put(predicate, jsonArray);
-        //         objects.put(objectId, specs);
-        //     }
-        // }
-        // long end = System.currentTimeMillis();
-        // float sec = (end - start) / 1000F;
-        // System.out.println(sec + " seconds");
-        // for(int i = objects.names().length()-1; i>=0; i--){
-        //     filmId = objects.names().getString(i);
-        //     if(isFilm(objects.getJSONObject(filmId))){
-        //         // go funkcie pridaj nakoniec podmienky pre neakceptovanie filmu z dalsieho cyklu tym eliminujeme dalsie prechadzanie filmov
-        //         films = getFilmSpecs(films, filmId, objects);
-        //     }
-        // }
-        // for(int i = films.names().length()-1; i>=0; i--){
-        //     String key = films.names().getString(i);
-        //     JSONObject value = films.getJSONObject(key);
-        //     if(value.isEmpty()){
-        //         films.remove(key);
-        //         continue;
-        //     }
-        //     try {
-        //         value.getJSONArray("title");
-        //     } catch (Exception e) {
-        //         System.out.println("film without title");
-        //         films.remove(key);
-        //     }       
-        // }
-        // Files.writeString(Paths.get("index.json"), films.toString(4));
-
-        // end = System.currentTimeMillis();
-        // sec = (end - start) / 1000F;
-        // System.out.println(sec + " seconds");
 
         long start = System.currentTimeMillis();
+        while (nxp.hasNext()) {
+            Node[] ns = nxp.next();
+            
+            if (ns.length == 3){
+                String predicate = ns[1].toString();
+                String object = ns[2].toString();
+                objectId = getObjectId(ns);
 
-        Path path = Path.of("index.json");
-        String parsedContent = Files.readString(path);
-        JSONObject films = new JSONObject(parsedContent);
+                JSONObject specs = new JSONObject();
+                JSONArray jsonArray = new JSONArray();
 
-        Indexer index = new Indexer();
-        index.buildIndex(films);
-        index.search("homme");
+                try {
+                    specs = objects.getJSONObject(objectId);
+                } catch (Exception e) {
+                    objects.put(objectId, new JSONObject());
+                }
+                try {
+                    jsonArray = specs.getJSONArray(predicate);
+                } catch (Exception e) {
+                    specs.put(predicate, jsonArray);
+                }
 
+                jsonArray.put(object);
+                specs.put(predicate, jsonArray);
+                objects.put(objectId, specs);
+            }
+        }
         long end = System.currentTimeMillis();
         float sec = (end - start) / 1000F;
         System.out.println(sec + " seconds");
+        for(int i = objects.names().length()-1; i>=0; i--){
+            filmId = objects.names().getString(i);
+            if(isFilm(objects.getJSONObject(filmId))){
+                // go funkcie pridaj nakoniec podmienky pre neakceptovanie filmu z dalsieho cyklu tym eliminujeme dalsie prechadzanie filmov
+                films = getFilmSpecs(films, filmId, objects);
+            }
+        }
+        for(int i = films.names().length()-1; i>=0; i--){
+            String key = films.names().getString(i);
+            JSONObject value = films.getJSONObject(key);
+            if(value.isEmpty()){
+                films.remove(key);
+                continue;
+            }
+            try {
+                value.getJSONArray("title");
+            } catch (Exception e) {
+                //System.out.println("film without title");
+                films.remove(key);
+            }       
+        }
+        Files.writeString(Paths.get("index.json"), films.toString(4));
+
+        end = System.currentTimeMillis();
+        sec = (end - start) / 1000F;
+        System.out.println(sec + " seconds");
+
+        // long start = System.currentTimeMillis();
+
+        // Path path = Path.of("index.json");
+        // String parsedContent = Files.readString(path);
+        // JSONObject films = new JSONObject(parsedContent);
+
+        // Indexer index = new Indexer();
+        // index.buildIndex(films);
+        // index.search("homme");
+
+        // long end = System.currentTimeMillis();
+        // float sec = (end - start) / 1000F;
+        // System.out.println(sec + " seconds");
     }
 }

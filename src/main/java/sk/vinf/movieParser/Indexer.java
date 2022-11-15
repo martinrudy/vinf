@@ -101,12 +101,6 @@ public class Indexer {
             System.out.println("Title: " + doc.getField("title").stringValue());
 
             System.out.println("Release year: " + doc.getField("year").stringValue());
-            // JSONArray names = new JSONArray(doc.getField("alternativeNames").stringValue());
-            // for(Object name : names) {
-            //     if(name instanceof String) {
-            //         System.out.println(name);
-            //     }
-            // }
         }
     }
 }
