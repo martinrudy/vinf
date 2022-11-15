@@ -1,42 +1,160 @@
 {
-    "g.12288sf9": {"title": "Holy Year"},
-    "g.11b6ph03pp": {"release_year": "1927"},
-    "g.11r7pv61f": {"release_year": "2010"},
-    "g.11b6t1scwz": {
-        "release_year": "1973",
-        "title": "José María y María José: Una pareja de hoy"
+    "g.122wbmv2": {"title": [
+        "Amor Para Três",
+        "Amor Para Três",
+        "Amor Para Três",
+        "Amor Para Três",
+        "Amor Para Três",
+        "Amor Para Três"
+    ]},
+    "g.122mq_1w": {
+        "release year": "1982",
+        "title": [
+            "Jamais avant le mariage",
+            "Jamais avant le mariage",
+            "Jamais avant le mariage"
+        ]
     },
-    "g.1228lzmc": {
-        "director": "\\t\\nAlekseyDyomin.\"@en",
-        "writter": "nullnull",
-        "release_year": "2001",
-        "title": "Cats under the Rain"
+    "g.1233lt5_": {
+        "release year": "1985-11-13",
+        "title": [
+            "L'homme aux yeux d'argent",
+            "L'homme aux yeux d'argent",
+            "L'homme aux yeux d'argent",
+            "L'homme aux yeux d'argent",
+            "L'homme aux yeux d'argent",
+            "L'homme aux yeux d'argent",
+            "L'homme aux yeux d'argent",
+            "L'homme aux yeux d'argent",
+            "L'homme aux yeux d'argent"
+        ]
     },
-    "g.11b769j941": {"title": "Rachel"},
-    "g.119pgkfwp": {"release_year": "1958"},
-    "g.11b6jbqpt4": {"title": "Madunnella"},
-    "g.121p6s28": {"release_year": "1985"},
+    "g.120m19_s": {
+        "release year": "1980-12-20",
+        "title": [
+            "Misuta, Misesu, Misu Ronri",
+            "ミスター・ミセス・ミス・ロンリー",
+            "Misuta, Misesu, Misu Ronri",
+            "ミスター・ミセス・ミス・ロンリー",
+            "ミスター・ミセス・ミス・ロンリー",
+            "Misuta, Misesu, Misu Ronri"
+        ]
+    },
+    "g.121cgn68": {"title": [
+        "Duelo em Glory City",
+        "Duelo em Glory City",
+        "Duelo em Glory City",
+        "Duelo em Glory City",
+        "Duelo em Glory City",
+        "Duelo em Glory City"
+    ]},
+    "g.11b6jbqpt4": {"title": [
+        "Madunnella",
+        "Madunnella",
+        "Madunnella"
+    ]},
+    "g.1203nd9vs": {
+        "release year": "2003-11-26",
+        "title": [
+            "Behibbuk wa ana kaman",
+            "بحبك وانا كمان",
+            "Behibbuk wa ana kaman",
+            "بحبك وانا كمان",
+            "بحبك وانا كمان",
+            "Behibbuk wa ana kaman"
+        ]
+    },
+    "g.11b768wtx5": {"title": [
+        "The History of the World Episode 10: The Discovery of Language",
+        "The History of the World Episode 10: The Discovery of Language",
+        "The History of the World Episode 10: The Discovery of Language"
+    ]},
     "g.11x1nf8ll": {
-        "director": "N.Filippov.\"@en",
-        "writter": "nullnull",
-        "release_year": "1908",
-        "title": "The Diligent Batman"
+        "release year": "1908",
+        "title": [
+            "The Diligent Batman",
+            "The Diligent Batman",
+            "The Diligent Batman"
+        ]
+    },
+    "g.12288sf9": {
+        "release year": "1976",
+        "title": [
+            "Holy Year",
+            "L'Année sainte",
+            "La gang dell'Anno Santo",
+            "Holy Year",
+            "L'Année sainte",
+            "La gang dell'Anno Santo",
+            "La gang dell'Anno Santo",
+            "L'Année sainte",
+            "Holy Year"
+        ]
+    },
+    "g.11x1nk41_": {
+        "release year": "1990-06-09",
+        "title": [
+            "Tôkyô jôkû irasshaimase",
+            "도쿄 하늘",
+            "Tokyo Heaven",
+            "東京上空いらっしゃいませ",
+            "Tôkyô jôkû irasshaimase",
+            "도쿄 하늘",
+            "Tokyo Heaven",
+            "東京上空いらっしゃいませ",
+            "도쿄 하늘",
+            "東京上空いらっしゃいませ",
+            "Tokyo Heaven",
+            "Tôkyô jôkû irasshaimase"
+        ]
     },
     "g.1222z6yv": {
-        "director": "RangelVulchanov.\"@en",
-        "writter": "nullnull",
-        "release_year": "1995-04-22",
-        "title": "Jesse James vs. Lokum Shekerov"
+        "release year": "1995-04-22",
+        "title": [
+            "Jesse James vs. Lokum Shekerov",
+            "Jesse James vs. Lokum Shekerov",
+            "Jesse James vs. Lokum Shekerov"
+        ]
     },
-    "g.121dpm5c": {"release_year": "1960"},
-    "g.1203nd9vs": {
-        "director": "Muhammadal-Najjar.\"@en",
-        "writter": "Ayman BahgatKamar",
-        "release_year": "2003-11-26",
-        "title": "Behibbuk wa ana kaman"
+    "g.1228lzmc": {
+        "release year": "2001",
+        "title": [
+            "Cats under the Rain",
+            "Cats under the Rain",
+            "Cats under the Rain"
+        ]
     },
-    "g.11b768wtx5": {"title": "The History of the World Episode 10: The Discovery of Language"},
-    "g.1226s95s": {"title": "And Love Returned"},
-    "g.121w6c77": {"release_year": "1991"},
-    "g.1222cpsb": {"release_year": "1975"}
+    "g.11b769j941": {
+        "release year": "2006",
+        "title": [
+            "Rachel",
+            "Rachel",
+            "Rachel",
+            "Rachel",
+            "Rachel",
+            "Rachel",
+            "Rachel",
+            "Rachel",
+            "Rachel"
+        ]
+    },
+    "g.1226s95s": {
+        "release year": "1961",
+        "title": [
+            "وادي الحب",
+            "And Love Returned",
+            "وادي الحب",
+            "And Love Returned",
+            "And Love Returned",
+            "وادي الحب"
+        ]
+    },
+    "g.11b6t1scwz": {
+        "release year": "1973",
+        "title": [
+            "José María y María José: Una pareja de hoy",
+            "José María y María José: Una pareja de hoy",
+            "José María y María José: Una pareja de hoy"
+        ]
+    }
 }
