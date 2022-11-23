@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.random.RandomGenerator.ArbitrarilyJumpableGenerator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.annotation.meta.When;
+
 import java.util.Iterator;
 
 import org.apache.commons.lang3.ObjectUtils.Null;
@@ -343,7 +346,7 @@ public class App {
 
         long start = System.currentTimeMillis();
 
-        String path = "/Users/rudy/Documents/FIIT/VINF/Projekt/Data/freebase-head-1000000";
+        String path = "/Users/rudy/Documents/FIIT/VINF/Projekt/Data/freebase-head-100000000";
         StructType csvSchema = new StructType()
             .add("subject", "string")
             .add("predicate", "string")
@@ -370,6 +373,13 @@ public class App {
         Dataset<Row>  writters = lines.filter(lines.col("predicate").equalTo("<http://rdf.freebase.com/ns/film.film.written_by>")).withColumnRenamed("object", "writterId");
         writters = writters.withColumnRenamed("subject", "subold");
 
+        Dataset<Row>  country = lines.filter(lines.col("predicate").equalTo("<http://rdf.freebase.com/ns/film.film.country>")).withColumnRenamed("object", "countryId");
+        country = country.withColumnRenamed("subject", "subold");
+        country = country.dropDuplicates("subold");
+
+        Dataset<Row>  genre = lines.filter(lines.col("predicate").equalTo("<http://rdf.freebase.com/ns/film.film.genre>")).withColumnRenamed("object", "genreId");
+        genre = genre.withColumnRenamed("subject", "subold");
+        genre = genre.dropDuplicates("subold");
 
         Dataset<Row> filmRelease = lines.filter(lines.col("predicate").equalTo("<http://rdf.freebase.com/ns/film.film.initial_release_date>")).select("subject", "object");
         filmRelease = filmRelease.withColumnRenamed("object", "year");
@@ -380,10 +390,20 @@ public class App {
         films = films.join(filmRelease, films.col("subject").equalTo(filmRelease.col("subold")), "left").select("subject", "filmTitle", "year");
         films = films.join(directors, films.col("subject").equalTo(directors.col("subold")), "left").select("subject", "filmTitle", "year", "directorId");
         films = films.join(writters, films.col("subject").equalTo(writters.col("subold")), "left").select("subject", "filmTitle", "year", "directorId", "writterId");
-        films = films.join(titles, films.col("directorId").equalTo(titles.col("subold")), "left").select("subject", "filmTitle", "year", "directorId", "writterId", "title").withColumnRenamed("title", "directorTitle");
+        films = films.join(country, films.col("subject").equalTo(country.col("subold")), "left").select("subject", "filmTitle", "year", "directorId", "writterId", "countryId");
+        films = films.join(genre, films.col("subject").equalTo(genre.col("subold")), "left").select("subject", "filmTitle", "year", "directorId", "writterId", "countryId", "genreId");
         
-        Pattern p = Pattern.compile("\"([^\"]*)\"");
-        JavaRDD<Row> filmy = films.toJavaRDD();
+        
+        films = films.join(titles, films.col("directorId").equalTo(titles.col("subold")), "left").select("subject", "filmTitle", "year", "directorId", "writterId", "title", "countryId", "genreId").withColumnRenamed("title", "directorTitle");
+        films = films.join(titles, films.col("writterId").equalTo(titles.col("subold")), "left").select("subject", "filmTitle", "year", "directorTitle", "title", "countryId", "genreId").withColumnRenamed("title", "writterTitle");
+        films = films.join(titles, films.col("countryId").equalTo(titles.col("subold")), "left").select("subject", "filmTitle", "year", "directorTitle", "writterTitle", "title", "genreId").withColumnRenamed("title", "countryTitle");
+        films = films.join(titles, films.col("genreId").equalTo(titles.col("subold")), "left").select("subject", "filmTitle", "year", "directorTitle", "writtertitle", "countryTitle", "title").withColumnRenamed("title", "genreTitle");
+        
+        // Pattern p = Pattern.compile("\"([^\"]*)\"");
+        // Matcher m;
+        // films.withColumn("filmTitle", regexp_replace("address", "Rd", "Road"));
+        // Pattern p = Pattern.compile("\"([^\"]*)\"");
+        // JavaRDD<Row> filmy = films.toJavaRDD();
 
         // filmy = filmy.map( row -> {
         //     Matcher m = p.matcher(row.getAs("filmTitle"));
@@ -391,10 +411,10 @@ public class App {
         //   });
         // films.show(5);
 
-        films = films.rdd().map((MapFunction<String, String>) row -> {
-            Matcher m = p.matcher(row);
-            return m.group(1);
-        }, Encoders.STRING());
+        // films = films.rdd().map((MapFunction<String, String>) row -> {
+        //     Matcher m = p.matcher(row);
+        //     return m.group(1);
+        // }, Encoders.STRING());
 
         
         // films = sparkSession.createDataset(films.toJavaRDD().map(row -> {
@@ -409,8 +429,9 @@ public class App {
         //         return newRow;
         //     }
         // }, Encoders.bean(Row.class));
+        // System.out.println(films.count());
         films.show(5);
-        // System.out.println(films.showString(18, 0, true));
+        // System.out.println(films.showString(5, 0, true));
 
         long end = System.currentTimeMillis();
         float sec = (end - start) / 1000F;
