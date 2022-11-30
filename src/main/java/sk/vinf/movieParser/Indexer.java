@@ -6,15 +6,16 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
-import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.search.BooleanClause.Occur;
+import org.apache.lucene.search.BooleanQuery.Builder;
 import org.apache.lucene.store.ByteBuffersDirectory;
 import org.apache.lucene.store.Directory;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -40,11 +41,34 @@ public class Indexer {
             JSONObject value = films.getJSONObject(key);
             Document document = new Document();
             try {
-                document.add(new TextField("title", value.getJSONArray("title").getString(0), Field.Store.YES));
-                document.add(new StoredField("year", value.toString()));
+                document.add(new TextField("title", value.get("filmTitle").toString(), Field.Store.YES));
             } catch (Exception e) {
-                System.out.println("film without title");
-                System.out.println(value);
+                
+            }
+            try {
+                document.add(new TextField("director", value.get("directorTitle").toString(), Field.Store.YES));
+            } catch (Exception e) {
+                
+            }
+            try {
+                document.add(new StoredField("writter", value.get("writterTitle").toString()));
+            } catch (Exception e) {
+                
+            }
+            try {
+                document.add(new StoredField("country", value.get("countryTitle").toString()));
+            } catch (Exception e) {
+                
+            }
+            try {
+                document.add(new StoredField("genre", value.get("genreTitle").toString()));
+            } catch (Exception e) {
+                
+            }
+            try {
+                document.add(new StoredField("year", value.get("year").toString()));
+            } catch (Exception e) {
+                
             }
 
             try {
@@ -62,13 +86,42 @@ public class Indexer {
     }
 
     public void search(String strQuery) {
+        String[] queryParsed = strQuery.split(":");
+        String combination = queryParsed[0];
+        String title = queryParsed[1];
+        String director = queryParsed[2];
 
-        Query query;
-        try {
-            query = new QueryParser("title", analyzer).parse(strQuery);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
+        Builder boolQueryBuilder = new BooleanQuery.Builder();
+
+        Query queryTitle;
+        Query queryDirector;
+        if(combination.equals("td")){
+            try {
+                queryTitle = new QueryParser("title", analyzer).parse(title);
+                queryDirector = new QueryParser("director", analyzer).parse(director);
+                boolQueryBuilder
+                    .add(queryTitle, Occur.MUST)
+                    .add(queryDirector, Occur.MUST);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            
+        } else if(combination.equals("t")){
+            try {
+                queryTitle = new QueryParser("title", analyzer).parse(title);
+                boolQueryBuilder.add(queryTitle, Occur.MUST);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        } else if (combination.equals("d")){
+            try {
+                queryDirector = new QueryParser("director", analyzer).parse(director);
+                boolQueryBuilder.add(queryDirector, Occur.MUST);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
+    
 
         IndexReader indexReader;
         try {
@@ -80,8 +133,9 @@ public class Indexer {
         IndexSearcher searcher = new IndexSearcher(indexReader);
 
         TopDocs topDocs;
+        BooleanQuery boolQuery = boolQueryBuilder.build();
         try {
-            topDocs = searcher.search(query, 10);
+            topDocs = searcher.search(boolQuery, 10);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -100,7 +154,12 @@ public class Indexer {
             System.out.println();
             System.out.println("Title: " + doc.getField("title").stringValue());
 
-            System.out.println("Release year: " + doc.getField("year").stringValue());
+            try {
+                System.out.println("Release year: " + doc.getField("year").stringValue());
+
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
         }
     }
 }
