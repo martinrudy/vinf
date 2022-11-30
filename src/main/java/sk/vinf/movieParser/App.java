@@ -9,6 +9,16 @@ public class App {
 
     public static void search(String query) {
         long start = System.currentTimeMillis();
+
+        Indexer index = new Indexer();
+        index.search(query);
+    
+        long end = System.currentTimeMillis();
+        float sec = (end - start) / 1000F;
+        System.out.println(sec + " seconds");
+    }
+    public static void createIndex() {
+        long start = System.currentTimeMillis();
         Cleanser cleanser = new Cleanser();
         try {
             cleanser.clean();
@@ -16,8 +26,12 @@ public class App {
             e.printStackTrace();
         }
         Indexer index = new Indexer();
-        index.buildIndex(cleanser.films);
-        index.search(query);
+        try {
+            index.buildIndex(cleanser.films);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     
         long end = System.currentTimeMillis();
         float sec = (end - start) / 1000F;
@@ -32,9 +46,10 @@ public class App {
         while(true){
             System.out.println("=======================================================");
             System.out.println("===To start parsing Data press 1                    ===");
-            System.out.println("===To search by film title and director name press 2===");
-            System.out.println("===To search by film title press 3                  ===");
-            System.out.println("===To search by director name press 4               ===");
+            System.out.println("===To start indexing parsed data 2                  ===");
+            System.out.println("===To search by film title and director name press 3===");
+            System.out.println("===To search by film title press 4                  ===");
+            System.out.println("===To search by director name press 5               ===");
             System.out.println("=======================================================");
             Scanner myObj = new Scanner(System.in);
             switcher = myObj.nextInt();
@@ -45,6 +60,10 @@ public class App {
                     switcher = 0;
                     break;
                 case 2:
+                    createIndex();
+                    switcher = 0;
+                    break;
+                case 3:
                     System.out.println("Type film title to search");
                     Scanner s = new Scanner(System.in);
                     title = s.nextLine();
@@ -56,7 +75,7 @@ public class App {
                     search(query);
                     switcher = 0;
                     break;
-                case 3:
+                case 4:
                     System.out.println("Type film title to search");
                     Scanner l = new Scanner(System.in);
                     title = l.nextLine();
@@ -65,7 +84,7 @@ public class App {
                     search(query);
                     switcher = 0;
                     break;
-                case 4:
+                case 5:
                     System.out.println("Type film director to search");
                     Scanner p = new Scanner(System.in);
                     director = p.nextLine();

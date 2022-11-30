@@ -76,7 +76,7 @@ public class Cleanser {
         Pattern pattern = Pattern.compile("\"([^\"]*)\"");
         String director;
         try {
-            director = film.get("writterTitle").toString();
+            director = film.get("writtertitle").toString();
             Matcher matcher = pattern.matcher(director);
             if (matcher.find()) {
                 director = matcher.group(1);
@@ -87,7 +87,7 @@ public class Cleanser {
             return film;
         }
         
-        film.put("writterTitle", director);
+        film.put("writtertitle", director);
         return film;
     }
     public JSONObject cleanCountry(JSONObject film) {

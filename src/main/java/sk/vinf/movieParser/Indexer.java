@@ -16,9 +16,11 @@ import org.apache.lucene.search.BooleanClause.Occur;
 import org.apache.lucene.search.BooleanQuery.Builder;
 import org.apache.lucene.store.ByteBuffersDirectory;
 import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.FSDirectory;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,12 +28,14 @@ public class Indexer {
     private final Directory memoryIndex = new ByteBuffersDirectory();
     private final StandardAnalyzer analyzer = new StandardAnalyzer();
 
-    public void buildIndex(JSONObject films) {
+    public void buildIndex(JSONObject films) throws IOException {
+        FSDirectory directory = FSDirectory.open(Path.of("index"));
+
         IndexWriterConfig indexWriterConfig = new IndexWriterConfig(analyzer);
 
         IndexWriter writer;
         try {
-            writer = new IndexWriter(memoryIndex, indexWriterConfig);
+            writer = new IndexWriter(directory, indexWriterConfig);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -51,7 +55,7 @@ public class Indexer {
                 
             }
             try {
-                document.add(new StoredField("writter", value.get("writterTitle").toString()));
+                document.add(new StoredField("writter", value.get("writtertitle").toString()));
             } catch (Exception e) {
                 
             }
@@ -91,6 +95,7 @@ public class Indexer {
         String title = queryParsed[1];
         String director = queryParsed[2];
 
+        
         Builder boolQueryBuilder = new BooleanQuery.Builder();
 
         Query queryTitle;
@@ -125,7 +130,8 @@ public class Indexer {
 
         IndexReader indexReader;
         try {
-            indexReader = DirectoryReader.open(memoryIndex);
+            FSDirectory directory = FSDirectory.open(Path.of("index"));
+            indexReader = DirectoryReader.open(directory);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -156,7 +162,26 @@ public class Indexer {
 
             try {
                 System.out.println("Release year: " + doc.getField("year").stringValue());
-
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+            try {
+                System.out.println("Country: " + doc.getField("country").stringValue());
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+            try {
+                System.out.println("Writter: " + doc.getField("writter").stringValue());
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+            try {
+                System.out.println("Director: " + doc.getField("director").stringValue());
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+            try {
+                System.out.println("Genre: " + doc.getField("genre").stringValue());
             } catch (Exception e) {
                 // TODO: handle exception
             }
