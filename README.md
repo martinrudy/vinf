@@ -56,8 +56,8 @@
         <version>3.3.1</version>
         <scope>provided</scope>
     </dependency>
-    
-   na definovanie poctu Worker nodes vytvorime subor /spark-3.3.1-bin-hadoop3/conf/spark-env.sh s obsahom:  
+    ```
+   Na definovanie počtu Worker nodes vytvoríme súbor /spark-3.3.1-bin-hadoop3/conf/spark-env.sh s obsahom:  
    
    ```bash
    export SPARK_WORKER_INSTANCES=2
