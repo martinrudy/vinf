@@ -14,8 +14,6 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.BooleanClause.Occur;
 import org.apache.lucene.search.BooleanQuery.Builder;
-import org.apache.lucene.store.ByteBuffersDirectory;
-import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.json.JSONObject;
 
@@ -25,9 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Indexer {
-    private final Directory memoryIndex = new ByteBuffersDirectory();
     private final StandardAnalyzer analyzer = new StandardAnalyzer();
 
+    
+    /** 
+     * @param films
+     * @throws IOException
+     */
     public void buildIndex(JSONObject films) throws IOException {
         FSDirectory directory = FSDirectory.open(Path.of("index"));
 
@@ -89,6 +91,10 @@ public class Indexer {
         }
     }
 
+    
+    /** 
+     * @param strQuery
+     */
     public void search(String strQuery) {
         String[] queryParsed = strQuery.split(":");
         String combination = queryParsed[0];

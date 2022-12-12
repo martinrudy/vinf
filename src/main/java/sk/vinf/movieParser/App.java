@@ -7,7 +7,11 @@ import java.util.Scanner;
 
 public class App {
 
-    public static void search(String query) {
+    
+    /** 
+     * @param query
+     */
+    public static int search(String query) {
         long start = System.currentTimeMillis();
 
         Indexer index = new Indexer();
@@ -16,6 +20,7 @@ public class App {
         long end = System.currentTimeMillis();
         float sec = (end - start) / 1000F;
         System.out.println(sec + " seconds");
+        return Math.round(sec);
     }
     public static void createIndex() {
         long start = System.currentTimeMillis();
@@ -37,6 +42,11 @@ public class App {
         float sec = (end - start) / 1000F;
         System.out.println(sec + " seconds");
     }
+    
+    /** 
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         int switcher = 0;
         String title = "null";

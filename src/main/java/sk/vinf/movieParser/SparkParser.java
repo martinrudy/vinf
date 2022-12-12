@@ -10,6 +10,10 @@ import org.apache.spark.sql.types.StructType;
 public class SparkParser {
 
 
+    
+    /** 
+     * @param path
+     */
     public void parse(String path) {
         SparkConf sparkConf = new SparkConf().setAppName("App").setMaster("spark://localhost:7077").setJars(new String[]{"jars/App.jar"});
         SparkSession sparkSession = SparkSession.builder().config(sparkConf).getOrCreate();
@@ -55,7 +59,6 @@ public class SparkParser {
         filmRelease = filmRelease.withColumnRenamed("subject", "subold");
         filmRelease = filmRelease.dropDuplicates("subold");
 
-        // System.out.println(films.count());
         films = films.join(titles, films.col("subject").equalTo(titles.col("subold")), "inner").select("subject", "title").withColumnRenamed("title", "filmTitle");
         films = films.join(filmRelease, films.col("subject").equalTo(filmRelease.col("subold")), "left").select("subject", "filmTitle", "year");
         films = films.join(directors, films.col("subject").equalTo(directors.col("subold")), "left").select("subject", "filmTitle", "year", "directorId");
@@ -70,7 +73,7 @@ public class SparkParser {
         films = films.join(titles, films.col("genreId").equalTo(titles.col("subold")), "left").select("subject", "filmTitle", "year", "directorTitle", "writtertitle", "countryTitle", "title").withColumnRenamed("title", "genreTitle");
 
         films.write().json("data/films/");
-        
+        System.out.println(films.count());
         long end = System.currentTimeMillis();
         float sec = (end - start) / 1000F;
         System.out.println(sec + " seconds");

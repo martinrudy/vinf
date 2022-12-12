@@ -8,15 +8,16 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Cleanser {
     public JSONObject films = new JSONObject();
 
+    
+    /** 
+     * @param film
+     * @return String
+     */
     public String cleanId(JSONObject film) {
         Pattern idPattern = Pattern.compile("<http://rdf.freebase.com/ns/(?<id>.+)>");
         String id;
@@ -35,6 +36,11 @@ public class Cleanser {
         
         return id;
     }
+    
+    /** 
+     * @param film
+     * @return JSONObject
+     */
     public JSONObject cleanTitle(JSONObject film) {
         Pattern pattern = Pattern.compile("\"([^\"]*)\"");
         String filmTitle;
@@ -53,6 +59,11 @@ public class Cleanser {
         film.put("filmTitle", filmTitle);
         return film;
     }
+    
+    /** 
+     * @param film
+     * @return JSONObject
+     */
     public JSONObject cleanDirector(JSONObject film) {
         Pattern pattern = Pattern.compile("\"([^\"]*)\"");
         String director;
@@ -72,6 +83,11 @@ public class Cleanser {
         return film;
     }
 
+    
+    /** 
+     * @param film
+     * @return JSONObject
+     */
     public JSONObject cleanWritter(JSONObject film) {
         Pattern pattern = Pattern.compile("\"([^\"]*)\"");
         String director;
@@ -90,6 +106,11 @@ public class Cleanser {
         film.put("writtertitle", director);
         return film;
     }
+    
+    /** 
+     * @param film
+     * @return JSONObject
+     */
     public JSONObject cleanCountry(JSONObject film) {
         Pattern pattern = Pattern.compile("\"([^\"]*)\"");
         String country;
@@ -108,6 +129,11 @@ public class Cleanser {
         film.put("countryTitle", country);
         return film;
     }
+    
+    /** 
+     * @param film
+     * @return JSONObject
+     */
     public JSONObject cleanGenre(JSONObject film) {
         Pattern pattern = Pattern.compile("\"([^\"]*)\"");
         String genre;
@@ -127,6 +153,11 @@ public class Cleanser {
         return film;
     }
 
+    
+    /** 
+     * @param film
+     * @return JSONObject
+     */
     public JSONObject cleanYear(JSONObject film) {
         Pattern pattern = Pattern.compile("\"(?<date>.+)\".+");
         String year;
@@ -146,6 +177,10 @@ public class Cleanser {
         return film;
     }
 
+    
+    /** 
+     * @throws IOException
+     */
     public void clean() throws IOException {
         Path dir = Paths.get("data/films");
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json")) {
@@ -157,6 +192,7 @@ public class Cleanser {
                     String line = sc.nextLine();
                     JSONObject film = new JSONObject(line);
                     String filmId = cleanId(film);
+
                     film = cleanYear(film);
                     film = cleanTitle(film);
                     film = cleanDirector(film);
