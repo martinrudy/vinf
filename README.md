@@ -72,7 +72,9 @@
    ```
    
    Na http://localhost:8080/ mozme vidiet následovné GUI:  
-   ![spark GUI](spark-gui.png "Spark-GUI")
+   ![detail spark job](detail-spark-job.png "Spark-job-detail")
+  
+  Detail ukončenej aplikácie
    
    ## Indexovanie
    O indexovanie a vyhľádavanie sa stará trieda **Indexer.java** s prislušnými metódami. Pred samotnou indexáciou sa parsovane dáta očistia v triede **Cleanser.java** ktorého výstup sú JSON objekty definujúce jednotlivé filmy so špecifikáciami. Takto očistené JSON objekty sú vstupom do metodý indexovania kde vytvorený index sa uloží do adresára movie-parser/index/. Následné vyhľádavanie prebieha vytvorenými indexami. Viac Info v JavaDoc. Indexáciu definujeme pomocou Standard Serialyzeru.
