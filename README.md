@@ -31,7 +31,7 @@
   ## Movie-Parser
   Pre parsovanie dát využívame framework **Apache Spark**, kvôli distribuovanému efektívnemu spracovaniu veľkého množstva dát.  Pre následnu Indexáciu využivame knižnicu **Apache Lucene**, ktorá nám služi aj na vyhľadávanie pomocou vytvorených indexov. Logika pre celý systém je definovaná v diagrame
   
-   ![logic diagram](diagram-v2.png "Diagram") 
+   ![logic diagram](diagram-v3.png "Diagram") 
   
   
   ## Inštalácia a spustenie Java Apache Spark
