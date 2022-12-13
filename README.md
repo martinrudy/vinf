@@ -56,7 +56,8 @@
         <version>3.3.1</version>
         <scope>provided</scope>
     </dependency>
-    ```
+   ```  
+
    Na definovanie počtu Worker nodes vytvoríme súbor /spark-3.3.1-bin-hadoop3/conf/spark-env.sh s obsahom:  
    
    ```bash
@@ -123,5 +124,15 @@ Release year: 2006-11-03
 
 Title: A Most Mysterious Murder: The Case of Charles Bravo
 Release year: 2004-10-16
-   ```
+   ```  
+
+## CLI používateľské prostredie
+Po spustení programu poúživateľ ma možnosť výberu, podľa toho ako chce použiť náš systém:  
+- Ak zvolí možnosť 1, spustí sa Spark job na parsovanie dát opísané vyššie
+- Ak zvolí možnosť 2, spustí sa čistenie a indexovanie opísané vyššie
+- Ak zvolí možnosť 3, spustí sa vyhľadavanie opísané vyššie  
+
+Príklad:
+![cli-ui](search-example.png "CLI-ui")
+
    
