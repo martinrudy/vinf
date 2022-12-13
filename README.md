@@ -127,4 +127,9 @@ Release year: 2004-10-16
    ```
 ## Používanie
 Použivateľské rozhranie pozostáva z CLI aplikácie. Po spustení programu sa zobrazia možnosti interakcie:  
+![movie-parser UI](cli-ui.png "Movie-UI")
+
+- Ak používateľ zvolí možnosť 1 - spustí sa Spark job a tak parsovanie dát
+- Ak používateľ zvolí možnosť 2 - spustí sa Indexovanie opísané vyšie
+- Ak používateľ zvolí možnosť 3 - spustí sa Vyhľadávanie opísané vyšie
 
