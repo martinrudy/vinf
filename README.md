@@ -132,7 +132,8 @@ Po spustení programu poúživateľ ma možnosť výberu, podľa toho ako chce p
 - Ak zvolí možnosť 2, spustí sa čistenie a indexovanie opísané vyššie
 - Ak zvolí možnosť 3, spustí sa vyhľadavanie opísané vyššie  
 
-Príklad:
+Príklad:  
+
 ![cli-ui](search-example.png "CLI-ui")
 
    
