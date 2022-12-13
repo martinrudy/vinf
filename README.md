@@ -6,6 +6,7 @@
   Cieľom projketu je navrhnúť a implementovať systémové riešenie na parsovanie filmov a ich špecifikácií (názov, meno režiséra, meno scenáristu, rok vydania, krajina pôvodu, žaner) z freebase.  
   
   ## Technológie
+  **Java 18**
   **Nxparser** na spracovanie RDF N-Triples - použité vo verzii 1 (branch: feature/verzia-1)  
   **Json** na sracovanie JSON súborov  
   **Apache Lucene** na ingexovanie a vyhladavanie - použité vo verzii 1, 2  
