@@ -125,4 +125,6 @@ Release year: 2006-11-03
 Title: A Most Mysterious Murder: The Case of Charles Bravo
 Release year: 2004-10-16
    ```
-   
+## Používanie
+Použivateľské rozhranie pozostáva z CLI aplikácie. Po spustení programu sa zobrazia možnosti interakcie:  
+
