@@ -12,6 +12,8 @@
   **Apache Spark** na distribuované spracovanie a parsovanie - použité vo verzií 2
   
   ## Dáta
+  Pre správny chod programu dáta musia byt uložené movie-parser/data/dataset/<nazov suboru>  
+  Datasety na ktorých bol spúštaný program. 
   [Head 1 000 000](https://vi2022.ui.sav.sk/lib/exe/fetch.php?media=freebase-head-1000000.zip)  
   [Head 10 000 000](https://vi2022.ui.sav.sk/lib/exe/fetch.php?media=freebase-head-10000000.zip)  
   [Head 100 000 000](https://vi2022.ui.sav.sk/lib/exe/fetch.php?media=freebase-head-100000000.zip)  
@@ -78,7 +80,7 @@
   Detail ukončenej aplikácie
    ![detail spark job](detail-spark-job.png "Spark-job-detail")
    ## Indexovanie
-   O indexovanie a vyhľádavanie sa stará trieda **Indexer.java** s prislušnými metódami. Pred samotnou indexáciou sa parsovane dáta očistia v triede **Cleanser.java** ktorého výstup sú JSON objekty definujúce jednotlivé filmy so špecifikáciami. Takto očistené JSON objekty sú vstupom do metodý indexovania kde vytvorený index sa uloží do adresára movie-parser/index/. Následné vyhľádavanie prebieha vytvorenými indexami. Viac Info v JavaDoc. Indexáciu definujeme pomocou Standard Serialyzeru.
+   O indexovanie a vyhľádavanie sa stará trieda **Indexer.java** s prislušnými metódami. Pred samotnou indexáciou sa parsovane dáta očistia v triede **Cleanser.java** ktorého výstup sú JSON objekty definujúce jednotlivé filmy so špecifikáciami. Takto očistené JSON objekty sú vstupom do metodý indexovania kde vytvorený index sa uloží do adresára movie-parser/index/. Následné vyhľádavanie prebieha nad vytvorenými indexami. Indexáciu definujeme pomocou Standard Serialyzeru.
    
    Príklad JSON objektu pred Vstupom do **Cleanser.java**:  
    ```JSON
@@ -125,6 +127,16 @@ Release year: 2006-11-03
 Title: A Most Mysterious Murder: The Case of Charles Bravo
 Release year: 2004-10-16
    ```  
+
+## Unit testy  
+Pre testovanie sme si vytvorili 2 scenáre:
+- trieda **AppTest.java** implementuje testovaciu funkciu, ktorá overuje čas vyhľadávania určitého dopytu od používateľa
+- trieda **CleanserTest.java** implementuje testovaciu funkciu, ktorá overuje validitu parsovania atribútu ID zo stringu definujúci subjekt  
+Pre spustenie tried  implementujúce testovacie funkcie, využívame triedu **TestRunner.java**
+
+Výstup po spustení **TestRunner.java**:  
+
+![test-results](test-results.png "test-results")
 
 ## CLI používateľské prostredie
 Po spustení programu poúživateľ ma možnosť výberu, podľa toho ako chce použiť náš systém:  

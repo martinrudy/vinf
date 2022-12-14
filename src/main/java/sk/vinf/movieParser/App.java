@@ -66,7 +66,7 @@ public class App {
             switch (switcher) {
                 case 1:
                     SparkParser parser = new SparkParser();
-                    parser.parse("/Users/rudy/Documents/FIIT/VINF/Projekt/Data/freebase-head-100000000");
+                    parser.parse("./data/dataset/freebase-head-100000000");
                     switcher = 0;
                     break;
                 case 2:
