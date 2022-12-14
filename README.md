@@ -12,13 +12,12 @@
   **Apache Lucene** na ingexovanie a vyhladavanie - použité vo verzii 1, 2  
   **Apache Spark** na distribuované spracovanie a parsovanie - použité vo verzií 2
   
-  ## Dáta
-  Pre správny chod programu dáta musia byt uložené movie-parser/data/dataset/<nazov suboru>  
-  Datasety na ktorých bol spúštaný program.  
+  ## Dáta 
+  Datasety na ktorých bol spúštaný program:   
   [Head 1 000 000](https://vi2022.ui.sav.sk/lib/exe/fetch.php?media=freebase-head-1000000.zip)  
   [Head 10 000 000](https://vi2022.ui.sav.sk/lib/exe/fetch.php?media=freebase-head-10000000.zip)  
   [Head 100 000 000](https://vi2022.ui.sav.sk/lib/exe/fetch.php?media=freebase-head-100000000.zip)  
-     Dáta na parsovanie sú vo formáte **RDF n-triples**. Pre správny chod programusúbor s dátami musí byť uložený v data/ntriples/<data-file>. 
+     Dáta na parsovanie sú vo formáte **RDF n-triples**. Pre správny chod programu, súbor s dátami musí byť uložený v movie-parser/data/dataset/<nazov suboru> . 
    Ukážka:  
    ```
    <http://rdf.freebase.com/ns/g.11b6t1scwz>	<http://rdf.freebase.com/ns/type.object.type>	<http://rdf.freebase.com/ns/base.type_ontology.non_agent>	.
