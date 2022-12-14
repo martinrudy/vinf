@@ -13,7 +13,7 @@
   
   ## Dáta
   Pre správny chod programu dáta musia byt uložené movie-parser/data/dataset/<nazov suboru>  
-  Datasety na ktorých bol spúštaný program. 
+  Datasety na ktorých bol spúštaný program.  
   [Head 1 000 000](https://vi2022.ui.sav.sk/lib/exe/fetch.php?media=freebase-head-1000000.zip)  
   [Head 10 000 000](https://vi2022.ui.sav.sk/lib/exe/fetch.php?media=freebase-head-10000000.zip)  
   [Head 100 000 000](https://vi2022.ui.sav.sk/lib/exe/fetch.php?media=freebase-head-100000000.zip)  
